@@ -32,4 +32,4 @@ root                    (project root folder)
 
 ## Authors
 ---
-* TODO: Brandon Luce, Megan Westover, Camilo Camargo and Richard Darko Asare.
+Brandon Luce, Megan Westover, Camilo Camargo and Richard Darko Asare.
