@@ -63,82 +63,32 @@ class HandleCollisionsAction(Action):
         head2 = snake2.get_segments()[0]
         segments2 = snake2.get_segments()[1:]
         
-
-        '''i = 0
-
-        while i < len(segments2):
-            if head1.get_position().equals(segments2[i].get_position()):
-                self._is_game_over = True
-            i += 1
-        print(i)
         
-        j=0
-        while j < len(segments1):
-            if head2.get_position().equals(segments1[j].get_position()):
-                self._is_game_over = True
-            j += 1
-        print(j)'''#This give me the view that both snakes area same length
-        '''
-        for seg1,seg2 in itertools.zip_longest(segments1,segments2):
-            if head2.get_position() == seg1.get_position():
-                h = head2.get_position()
-                s = seg1.get_position()
-                print(h,s)
-                self._is_game_over = True
-            elif head1.get_position() == seg2.get_position():
-                h = head1.get_position()
-                s = seg2.get_position()
-                print(h,s)
-                self._is_game_over = True
-        '''
-
-        for indice in range(0,len(segments1)):
-            if segments1[indice] in segments2:
-                print('verdadero')
-            elif segments2[indice] in segments1:
-                print('verdadero')
-            else:
-                print('falso')
-            '''
         for seg1,seg2 in itertools.zip_longest(segments1,segments2):
             print('Entró de nuevo al for')
             print(f'h1x:{head1.get_position().get_x()},h1y:{head1.get_position().get_y()}')
             print(f'h2x:{head2.get_position().get_x()},h2y:{head2.get_position().get_y()}')
             print(f's1x:{seg1.get_position().get_x()},s1y:{seg1.get_position().get_y()}')
             print(f's2x:{seg2.get_position().get_x()},s2y:{seg2.get_position().get_y()}')
+            
+            #pixel tolerance level
+            a = 6
+            
+            head1Seg2X = (abs(head1.get_position().get_x() - seg2.get_position().get_x()) < a)
+            head1Seg2Y = (abs(head1.get_position().get_y() - seg2.get_position().get_y()) < a)
+            
+            print(head1Seg2X,head1Seg2Y)
 
+            head2Seg1X = (abs(head2.get_position().get_x() - seg1.get_position().get_x()) < a)
+            head2Seg1Y = (abs(head2.get_position().get_y() - seg1.get_position().get_y()) < a)
 
-
-              
-            if (head1.get_position().get_x() == seg2.get_position().get_x() & head1.get_position().get_y() == seg2.get_position().get_y())|(head2.get_position().get_x() == seg1.get_position().get_x() & head2.get_position().get_y() == seg1.get_position().get_y())|(seg1.get_position().get_x() == seg2.get_position().get_x() & seg1.get_position().get_y() == seg2.get_position().get_y()):
-                h = head2.get_position()
-                s = seg2.get_position()
-                print(h,s)
+            print(head2Seg1X,head2Seg1Y)
+            
+            if (head1Seg2X and head1Seg2Y
+                    or head2Seg1X and head2Seg1Y):
+                
+                print('#####################GAME OVER##################')
                 self._is_game_over = True
-            '''
-        #for seg1,seg2 in itertools.zip_longest(segments1,segments2):
-            '''if head2.get_position().equals(seg2.get_position())|head1.get_position().equals(seg1.get_position()):
-                h = head2.get_position()
-                s = seg2.get_position()
-                print(h,s)
-                self._is_game_over = True'''
-            #elif head1.get_position().equals(seg2.get_position()):
-                #self._is_game_over = True
-        
-        #for seg1,seg2 in (segments1,segments2):
-
-
-
-
-        #while self._is_game_over == False:
-        
-        #for segment in segments1:
-            #if head2.get_position().equals(segment.get_position())|head1.get_position().equals(segment.get_position()):
-                #self._is_game_over = True
-        
-        #for segment in segments2:
-            #if head1.get_position().equals(segment.get_position()):
-                #self._is_game_over = True
 
         
     def _handle_game_over(self, cast):
